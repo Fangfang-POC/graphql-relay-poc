@@ -1,50 +1,47 @@
 /**
- * @generated SignedSource<<dff52f4c1b31e0a8e9ccce5af22a9fee>>
- * @flow
+ * @generated SignedSource<<53226a2f1606756fc479b81f76be99e7>>
  * @lightSyntaxTransform
  * @nogrep
  */
 
+/* tslint:disable */
 /* eslint-disable */
+// @ts-nocheck
 
-'use strict';
+import { ConcreteRequest, Query } from 'relay-runtime';
+export type RebelsQuery$variables = {
+  id: string;
+};
+export type RebelsQuery$data = {
+  readonly rebels: {
+    readonly id: string;
+    readonly name: string | null;
+    readonly ships: {
+      readonly edges: ReadonlyArray<{
+        readonly node: {
+          readonly id: string;
+          readonly name: string | null;
+        } | null;
+      } | null> | null;
+      readonly pageInfo: {
+        readonly hasNextPage: boolean;
+        readonly hasPreviousPage: boolean;
+        readonly startCursor: string | null;
+        readonly endCursor: string | null;
+      };
+    } | null;
+  } | null;
+  readonly user: {
+    readonly id: string;
+    readonly name: string | null;
+  } | null;
+};
+export type RebelsQuery = {
+  variables: RebelsQuery$variables;
+  response: RebelsQuery$data;
+};
 
-/*::
-import type { ConcreteRequest, Query } from 'relay-runtime';
-export type RebelsQuery$variables = {|
-  id: string,
-|};
-export type RebelsQuery$data = {|
-  +rebels: ?{|
-    +id: string,
-    +name: ?string,
-    +ships: ?{|
-      +edges: ?$ReadOnlyArray<?{|
-        +node: ?{|
-          +id: string,
-          +name: ?string,
-        |},
-      |}>,
-      +pageInfo: {|
-        +hasNextPage: boolean,
-        +hasPreviousPage: boolean,
-        +startCursor: ?string,
-        +endCursor: ?string,
-      |},
-    |},
-  |},
-  +user: ?{|
-    +id: string,
-    +name: ?string,
-  |},
-|};
-export type RebelsQuery = {|
-  variables: RebelsQuery$variables,
-  response: RebelsQuery$data,
-|};
-*/
-
-var node/*: ConcreteRequest*/ = (function(){
+const node: ConcreteRequest = (function(){
 var v0 = [
   {
     "defaultValue": null,
@@ -201,9 +198,6 @@ return {
 };
 })();
 
-(node/*: any*/).hash = "90a3bdae87e972fff4d678d93c018d77";
+(node as any).hash = "90a3bdae87e972fff4d678d93c018d77";
 
-module.exports = ((node/*: any*/)/*: Query<
-  RebelsQuery$variables,
-  RebelsQuery$data,
->*/);
+export default node;
