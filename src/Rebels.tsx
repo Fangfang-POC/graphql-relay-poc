@@ -2,7 +2,7 @@
 import { graphql } from 'babel-plugin-relay/macro';
 import { QueryRenderer } from 'react-relay';
 import React from 'react';
-import { usePreloadedQuery, PreloadedQuery } from 'react-relay/hooks';
+import { usePreloadedQuery, PreloadedQuery, useQueryLoader } from 'react-relay/hooks';
 import * as RebelsQuery from './__generated__/RebelsQuery.graphql';
 
 type Props = {

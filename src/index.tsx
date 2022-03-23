@@ -1,19 +1,27 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { RelayEnvironmentProvider, loadQuery } from 'react-relay/hooks';
+import { RelayEnvironmentProvider, loadQuery, useQueryLoader } from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
 import './index.css';
-import App from './Rebels';
+import Rebels from './Rebels';
+import AddUser from './AddUser';
 import * as RebelsQuery from './__generated__/RebelsQuery.graphql';
+import * as AddUserMutationType from './__generated__/AddUserMutation.graphql';
 import reportWebVitals from './reportWebVitals';
 
 const preloadQuery = loadQuery<RebelsQuery.RebelsQuery>(RelayEnvironment, RebelsQuery.default, { id: '12' });
+const preloadQueryUser = loadQuery<AddUserMutationType.AddUserMutation>(RelayEnvironment, AddUserMutationType.default, {
+    user: { name: 'Fangfang', age: 12 },
+});
 
 ReactDOM.render(
     <React.StrictMode>
         <RelayEnvironmentProvider environment={RelayEnvironment}>
             <Suspense fallback={<div>Loading...</div>}>
-                <App preloadQuery={preloadQuery} />
+                <Rebels preloadQuery={preloadQuery} />
+            </Suspense>
+            <Suspense fallback={<div>Loading...</div>}>
+                <AddUser preloadQuery={preloadQueryUser} />
             </Suspense>
         </RelayEnvironmentProvider>
     </React.StrictMode>,
