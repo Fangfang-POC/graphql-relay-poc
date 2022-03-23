@@ -8,7 +8,11 @@
     "relay": "relay-compiler",
     "watch_relay": "npm-watch relay",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .ts,.tsx,.js src",
+    "lint:quiet": "eslint --quiet --ext .ts,.tsx,.js src",
+    "lint:fix": "eslint --fix --ext .ts,.tsx,.js src",
+    "prepare": "npx husky install"
   },
   "watch": {
     "relay": {
@@ -56,8 +60,14 @@
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
     "@types/react-relay": "^13.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "babel-plugin-relay": "^13.2.0",
     "concurrently": "^4.1.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.3.2",
     "npm-watch": "^0.11.0",
     "relay-compiler": "^13.2.0"
   }
