@@ -19,8 +19,9 @@
       "patterns": [
         "src"
       ],
-      "extensions": "ts,tsx",
+      "extensions": "ts,tsx,js",
       "ignore": "src/__generated__/*",
+      "quiet": false,
       "verbose": true
     }
   },
