@@ -74,6 +74,7 @@ interface Node {
     rebels(id: ID!): Faction
     empire: Faction
     node(id: ID!): Node
+    users: [User]
     user(id: ID!): User
     search: [SearchResult]
     vehicles: [Vehicle]

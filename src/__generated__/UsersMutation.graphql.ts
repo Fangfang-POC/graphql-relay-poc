@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<79be12be2ddd21b057adb6e8f3b5a7e2>>
+ * @generated SignedSource<<b3622fc6b9b88c9d4c7c8a22b3aed1a0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -13,19 +13,19 @@ export type AddUserInput = {
   name?: string | null;
   age?: number | null;
 };
-export type AddUserMutation$variables = {
+export type UsersMutation$variables = {
   user?: AddUserInput | null;
 };
-export type AddUserMutation$data = {
+export type UsersMutation$data = {
   readonly addUser: {
     readonly name: string | null;
     readonly id: string;
     readonly age: number | null;
   } | null;
 };
-export type AddUserMutation = {
-  variables: AddUserMutation$variables;
-  response: AddUserMutation$data;
+export type UsersMutation = {
+  variables: UsersMutation$variables;
+  response: UsersMutation$data;
 };
 
 const node: ConcreteRequest = (function(){
@@ -81,7 +81,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "AddUserMutation",
+    "name": "UsersMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation",
     "abstractKey": null
@@ -90,20 +90,20 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "AddUserMutation",
+    "name": "UsersMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "7b8b5a083b636afad4748edd0a48a57d",
+    "cacheID": "367a979d104594b79348d21c19bc8519",
     "id": null,
     "metadata": {},
-    "name": "AddUserMutation",
+    "name": "UsersMutation",
     "operationKind": "mutation",
-    "text": "mutation AddUserMutation(\n  $user: AddUserInput\n) {\n  addUser(input: $user) {\n    name\n    id\n    age\n  }\n}\n"
+    "text": "mutation UsersMutation(\n  $user: AddUserInput\n) {\n  addUser(input: $user) {\n    name\n    id\n    age\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "11f89dc63571421b1cf78f37427de244";
+(node as any).hash = "a2f3b589d12d9479636e451f73d52b0e";
 
 export default node;

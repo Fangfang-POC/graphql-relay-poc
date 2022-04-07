@@ -3,31 +3,17 @@ import ReactDOM from 'react-dom';
 import { RelayEnvironmentProvider, loadQuery, useQueryLoader } from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
 import './index.css';
-import Rebels from './Rebels';
-import AddUser from './AddUser';
-import Vehicles from './Vehicles';
-import * as RebelsQuery from './__generated__/RebelsQuery.graphql';
-import * as AddUserMutationType from './__generated__/AddUserMutation.graphql';
-import * as VehiclesType from './__generated__/VehiclesQuery.graphql';
+import { AddUser, GetUsers } from './Users';
 import reportWebVitals from './reportWebVitals';
-
-const preloadQuery = loadQuery<RebelsQuery.RebelsQuery>(RelayEnvironment, RebelsQuery.default, { id: '12' });
-const preloadQueryUser = loadQuery<AddUserMutationType.AddUserMutation>(RelayEnvironment, AddUserMutationType.default, {
-    user: { name: 'Fangfang', age: 12 },
-});
-const preloadQueryVehicles = loadQuery<VehiclesType.VehiclesQuery>(RelayEnvironment, VehiclesType.default, { id: 4 });
 
 ReactDOM.render(
     <React.StrictMode>
         <RelayEnvironmentProvider environment={RelayEnvironment}>
             <Suspense fallback={<div>Loading...</div>}>
-                <Rebels preloadQuery={preloadQuery} />
+                <GetUsers />
             </Suspense>
             <Suspense fallback={<div>Loading...</div>}>
-                <AddUser preloadQuery={preloadQueryUser} />
-            </Suspense>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Vehicles preloadQuery={preloadQueryVehicles} />
+                <AddUser />
             </Suspense>
         </RelayEnvironmentProvider>
     </React.StrictMode>,
