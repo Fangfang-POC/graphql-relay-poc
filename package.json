@@ -7,6 +7,7 @@
     "build": "react-scripts build",
     "relay": "relay-compiler",
     "watch_relay": "npm-watch relay",
+    "download:schema": "graphql-codegen --config codegen.yaml",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx,.js src",
@@ -53,6 +54,9 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/schema-ast": "^2.4.2-alpha-4a7e799f2.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",

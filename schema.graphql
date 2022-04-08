@@ -1,85 +1,96 @@
+input AddUserInput {
+  age: Int
+  name: String
+}
+
+type Airplane implements Vehicle {
+  maxSpeed: Int
+  wingspan: Int
+}
+
+type Car implements Vehicle {
+  licensePlate: String
+  maxSpeed: Int
+}
+
+type Cat {
+  gender: String
+  length: Int
+  name: String
+}
+
+type Dog {
+  age: Int
+  gender: String
+  weight: Int
+}
+
+type Faction implements Node {
+  id: ID!
+  name: String
+  ships: ShipConnection
+}
+
+enum Gender {
+  FEMALE
+  MALE
+}
+
+type Human {
+  age: Int
+  name: String
+}
+
+type Mutation {
+  addUser(input: AddUserInput): User
+}
+
 interface Node {
-    id: ID!
-  }
-  
-  type Faction implements Node {
-    id: ID!
-    name: String
-    ships: ShipConnection
-  }
-  
-  type Ship implements Node {
-    id: ID!
-    name: String
-  }
-  
-  type ShipConnection {
-    edges: [ShipEdge]
-    pageInfo: PageInfo!
-  }
-  
-  type ShipEdge {
-    cursor: String!
-    node: Ship
-  }
-  
-  type PageInfo {
-    hasNextPage: Boolean!
-    hasPreviousPage: Boolean!
-    startCursor: String
-    endCursor: String
-  }
-  type User {
-    id: ID!
-    name: String
-    age: Int
-  }
-  
-  type Human {
-    name: String
-    age: Int
-  }
-  type Dog {
-    gender: String
-    age: Int
-    weight: Int
-  }
-  type Cat {
-    gender: String
-    name: String
-    length: Int
-  }
-  union SearchResult = Human | Dog | Cat
+  id: ID!
+}
 
-  interface Vehicle {
-    maxSpeed: Int
-  }
-  
-  type Airplane implements Vehicle {
-    maxSpeed: Int
-    wingspan: Int
-  }
-  
-  type Car implements Vehicle {
-    maxSpeed: Int
-    licensePlate: String
-  }
-  
-  input AddUserInput {
-    name: String
-    age: Int
-  }
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
 
-  type Query {
-    rebels(id: ID!): Faction
-    empire: Faction
-    node(id: ID!): Node
-    users: [User]
-    user(id: ID!): User
-    search: [SearchResult]
-    vehicles: [Vehicle]
-  }
+type Query {
+  empire: Faction
+  node(id: ID!): Node
+  rebels(id: ID!): Faction
+  search: [SearchResult]
+  user(id: ID!): User
+  users: [User]
+  vehicles: [Vehicle]
+}
 
-  type Mutation {
-    addUser(input: AddUserInput): User
-  }
+union SearchResult = Cat | Dog | Human
+
+type Ship implements Node {
+  id: ID!
+  name: String
+}
+
+type ShipConnection {
+  edges: [ShipEdge]
+  pageInfo: PageInfo!
+}
+
+type ShipEdge {
+  cursor: String!
+  node: Ship
+}
+
+type User {
+  age: Int
+  gender: Gender
+  id: ID!
+  name: String
+  username: String
+}
+
+interface Vehicle {
+  maxSpeed: Int
+}

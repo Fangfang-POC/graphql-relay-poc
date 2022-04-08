@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b3622fc6b9b88c9d4c7c8a22b3aed1a0>>
+ * @generated SignedSource<<00c77668c34db2c06608288ce44c25f9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,8 +10,8 @@
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
 export type AddUserInput = {
-  name?: string | null;
   age?: number | null;
+  name?: string | null;
 };
 export type UsersMutation$variables = {
   user?: AddUserInput | null;
