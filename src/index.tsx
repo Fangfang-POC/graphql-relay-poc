@@ -3,17 +3,14 @@ import ReactDOM from 'react-dom';
 import { RelayEnvironmentProvider, loadQuery, useQueryLoader } from 'react-relay/hooks';
 import RelayEnvironment from './RelayEnvironment';
 import './index.css';
-import { AddUser, GetUsers } from './Users';
+import UserComponent from './UserComponent';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
     <React.StrictMode>
         <RelayEnvironmentProvider environment={RelayEnvironment}>
             <Suspense fallback={<div>Loading...</div>}>
-                <GetUsers />
-            </Suspense>
-            <Suspense fallback={<div>Loading...</div>}>
-                <AddUser />
+                <UserComponent />
             </Suspense>
         </RelayEnvironmentProvider>
     </React.StrictMode>,
