@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/build/bundle.8fdba5c3.js",
+    "main.css": "/static/css/main.882704a5.css",
+    "Rebels.md": "/31b5214b042c9cf2fb68.md",
+    "README.md": "/35f20ad82f8797d76bad.md",
+    "User.md": "/ca900ab2fadb2913bfe6.md",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "build/bundle.8fdba5c3.js",
+    "static/css/main.882704a5.css"
+  ]
+}

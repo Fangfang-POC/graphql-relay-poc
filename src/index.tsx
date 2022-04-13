@@ -1,10 +1,9 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { RelayEnvironmentProvider, loadQuery, useQueryLoader } from 'react-relay/hooks';
-import RelayEnvironment from './RelayEnvironment';
+import RelayEnvironment from './utils/RelayEnvironment';
 import './index.css';
-import UserComponent from './UserComponent';
-import reportWebVitals from './reportWebVitals';
+import UserComponent from './examples/FragmentExample/User';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -16,8 +15,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
