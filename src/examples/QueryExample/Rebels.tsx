@@ -37,7 +37,7 @@ const RebelsNameQuery = graphql`
     }
 `;
 
-function Rebels(props: Props): JSX.Element {
+function RebelsComponent(props: Props): JSX.Element {
     const data = usePreloadedQuery<RebelsQuery.RebelsQuery>(RebelsNameQuery, props.preloadQuery);
     console.log(data);
     return <h1>{data?.rebels?.name}</h1>;
@@ -45,6 +45,6 @@ function Rebels(props: Props): JSX.Element {
 
 const preloadQuery = loadQuery<RebelsQuery.RebelsQuery>(RelayEnvironment, RebelsNameQuery, { id: '12' });
 
-export function RebelsApp() {
-    return <Rebels preloadQuery={preloadQuery} />;
+export default function Rebels() {
+    return <RebelsComponent preloadQuery={preloadQuery} />;
 }

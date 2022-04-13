@@ -45,7 +45,7 @@ module.exports = {
         liveReload: true,
         open: true,
         port: parseInt(process.env.SERVER_PORT) || 6068, //make this port the same as styleguidist port to reload the page when changes are made.
-        // progress: true,
+        progress: true,
         hot: true,
     },
     plugins: [new HtmlWebpackPlugin({

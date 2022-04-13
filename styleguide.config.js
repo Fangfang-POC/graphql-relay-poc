@@ -42,7 +42,7 @@ module.exports = {
                 components: ['src/examples/MutationExample/Users.tsx']
             }, {
                 name: 'Query examples',
-                components: ['src/examples/QueryExample/[A-Za-z].tsx']
+                components: ['src/examples/QueryExample/Rebels.tsx']
             }]
         }
     ]
