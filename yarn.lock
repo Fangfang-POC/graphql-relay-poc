@@ -5107,7 +5107,7 @@ graphql-sse@^1.0.1:
   resolved "https://seismic.jfrog.io/seismic/api/npm/npm/graphql-sse/-/graphql-sse-1.1.0.tgz#05a8ea0528b4bde1c042caa5a7a63ef244bd3c56"
   integrity sha512-xE8AGPJa5X+g7iFmRQw/8H+7lXIDJvSkW6lou/XSSq17opPQl+dbKOMiqraHMx52VrDgS061ZVx90OSuqS6ykA==
 
-graphql-ws@^5.4.1:
+graphql-ws@^5.4.1, graphql-ws@^5.7.0:
   version "5.7.0"
   resolved "https://seismic.jfrog.io/seismic/api/npm/npm/graphql-ws/-/graphql-ws-5.7.0.tgz#4b9d7a0ee9555804582f27f5d7695d10aafdbdc8"
   integrity sha512-8yYuvnyqIjlJ/WfebOyu2GSOQeFauRxnfuTveY9yvrDGs2g3kR9Nv4gu40AKvRHbXlSJwTbMJ6dVxAtEyKwVRA==

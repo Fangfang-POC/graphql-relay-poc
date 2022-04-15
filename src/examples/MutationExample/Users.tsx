@@ -67,8 +67,7 @@ export function AddUser(): JSX.Element {
                     commit({
                         variables: { user: { name, age } },
                         onCompleted: (data) => {
-                            console.log(data);
-                            loadQuery({});
+                            loadQuery(queryReference ? queryReference.variables : {}, { fetchPolicy: 'network-only' });
                         },
                         onError: (error) => {
                             console.log(error);
@@ -85,16 +84,16 @@ export function AddUser(): JSX.Element {
 export function GetUsers(): JSX.Element {
     const [queryReference, loadQuery, disposeQuery] = useQueryLoader<UsersQueryType.UsersQuery>(
         UsersQuery,
-        // preloadQueryUsers,
+        preloadQueryUsers,
     );
     return (
         <div>
             <button
                 onClick={() => {
-                    loadQuery({});
+                    loadQuery(queryReference ? queryReference.variables : {}, { fetchPolicy: 'network-only' });
                 }}
             >
-                Load Users
+                Get Users
             </button>
             <button
                 onClick={() => {
@@ -111,7 +110,7 @@ export function GetUsers(): JSX.Element {
 }
 function UserDisplay(props: { queryReference: PreloadedQuery<UsersQueryType.UsersQuery> }): JSX.Element {
     if (props.queryReference === null) {
-        return <div>Load it manually please</div>;
+        return <div>Load users manually please</div>;
     }
     const data = usePreloadedQuery<UsersQueryType.UsersQuery>(UsersQuery, props.queryReference);
     return (

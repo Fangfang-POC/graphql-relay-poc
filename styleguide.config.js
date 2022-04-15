@@ -40,10 +40,16 @@ module.exports = {
             }, {
                 name: 'Mutation example',
                 components: ['src/examples/MutationExample/Users.tsx']
-            }, {
-                name: 'Query examples',
-                components: ['src/examples/QueryExample/Rebels.tsx']
-            }]
+            },
+            // {
+            //     name: 'Query examples',
+            //     components: ['src/examples/QueryExample/Rebels.tsx']
+            // },
+            {
+                name: 'Subscription example',
+                components: ['src/examples/SubscriptionExample/LatestUser.tsx']
+            }
+            ]
         }
     ]
 }

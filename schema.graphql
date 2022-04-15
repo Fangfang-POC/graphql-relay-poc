@@ -83,6 +83,10 @@ type ShipEdge {
   node: Ship
 }
 
+type Subscription {
+  userAdded: User
+}
+
 type User {
   age: Int
   gender: Gender
