@@ -1,3 +1,5 @@
+directive @uppercase on FIELD_DEFINITION
+
 input AddUserInput {
   age: Int
   name: String
@@ -62,7 +64,7 @@ type Query {
   rebels(id: ID!): Faction
   search: [SearchResult]
   user(id: ID!): User
-  users: [User]
+  users(limit: Int, offset: Int): UsersQueryResult
   vehicles: [Vehicle]
 }
 
@@ -89,10 +91,15 @@ type Subscription {
 
 type User {
   age: Int
-  gender: Gender
+  gender: Gender @deprecated(reason: "test directive")
   id: ID!
   name: String
   username: String
+}
+
+type UsersQueryResult {
+  totalCount: Int
+  userList: [User]
 }
 
 interface Vehicle {

@@ -1,10 +1,9 @@
-import { graphql } from 'react-relay';
-import React, { Suspense, useEffect } from 'react';
+import { graphql, useRelayEnvironment } from 'react-relay';
+import React, { Suspense, useEffect, useMemo } from 'react';
 import { useFragment, usePreloadedQuery, loadQuery, PreloadedQuery } from 'react-relay/hooks';
 import * as UserComponetNameType from './__generated__/UserComponent_name.graphql';
 import * as UserComponentUserType from './__generated__/UserComponent_user.graphql';
 import * as UserComponentQueryType from './__generated__/UserComponentQuery.graphql';
-import RelayEnvironment from '../../utils/RelayEnvironment';
 import './style.css';
 
 function UserNameSection(props: { user: UserComponetNameType.UserComponent_name$key }) {
@@ -32,25 +31,33 @@ function UserComponent(props: { user: UserComponentUserType.UserComponent_user$k
             <span className="userValue">{user.age}</span>
             <span className="userValue">{user.gender}</span>
             <span className="userValue">{user.username}</span>
-            <UserNameSection user={user} />
+            <Suspense fallback={<div>Fetching username</div>}>
+                <UserNameSection user={user} />
+            </Suspense>
         </>
     );
 }
 
-const UserComponentQuery = graphql`
-    query UserComponentQuery($id: ID!) {
-        user(id: $id) {
-            id
-            ...UserComponent_user
-        }
-    }
-`;
-const preloadedQueryReference = loadQuery<UserComponentQueryType.UserComponentQuery>(
-    RelayEnvironment,
-    UserComponentQuery,
-    { id: '1001' },
-);
 export default function User(): JSX.Element {
+    const UserComponentQuery = graphql`
+        query UserComponentQuery($id: ID!) {
+            user(id: $id) {
+                id
+                ...UserComponent_user
+            }
+        }
+    `;
+    const preloadedQueryReference = useMemo(
+        () =>
+            loadQuery<UserComponentQueryType.UserComponentQuery>(
+                useRelayEnvironment(),
+                UserComponentQuery,
+                { id: '1001' },
+                { fetchPolicy: 'store-or-network', networkCacheConfig: { force: true } },
+            ),
+        [],
+    );
+
     const data = usePreloadedQuery<UserComponentQueryType.UserComponentQuery>(
         UserComponentQuery,
         preloadedQueryReference!,

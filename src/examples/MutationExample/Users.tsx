@@ -1,4 +1,4 @@
-import { graphql } from 'react-relay';
+import { graphql, ConnectionHandler } from 'react-relay';
 import React, { Suspense, useState } from 'react';
 import {
     useQueryLoader,
@@ -16,11 +16,14 @@ import './style.scss';
 const UsersQuery = graphql`
     query UsersQuery {
         users {
-            name
-            id
-            age
-            gender
-            username
+            totalCount
+            userList {
+                name
+                id
+                username
+                gender
+                age
+            }
         }
     }
 `;
@@ -72,6 +75,16 @@ export function AddUser(): JSX.Element {
                         onError: (error) => {
                             console.log(error);
                         },
+                        updater: (store) => {
+                            // const record = store.get(data?.addUser.id);
+                            // Get connection record
+                            // const connectionRecord = ConnectionHandler.getConnection(
+                            //     feedbackRecord,
+                            //     'CommentsComponent_comments_connection',
+                            // );
+                            // Get the payload returned from the server
+                            const payload = store.getRootField('addUser');
+                        },
                     })
                 }
             >
@@ -112,29 +125,33 @@ function UserDisplay(props: { queryReference: PreloadedQuery<UsersQueryType.User
     if (props.queryReference === null) {
         return <div>Load users manually please</div>;
     }
-    const data = usePreloadedQuery<UsersQueryType.UsersQuery>(UsersQuery, props.queryReference);
+    const { users } = usePreloadedQuery<UsersQueryType.UsersQuery>(UsersQuery, props.queryReference);
+    const { totalCount, userList } = users!;
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Username</th>
-                </tr>
-            </thead>
-            <tbody>
-                {data?.users?.map((user) => (
-                    <tr key={user?.id}>
-                        <td>{user?.id}</td>
-                        <td>{user?.name}</td>
-                        <td>{user?.age}</td>
-                        <td>{user?.gender}</td>
-                        <td>{user?.username}</td>
+        <>
+            <div>Total Count: {totalCount}</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Username</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {userList?.map((user) => (
+                        <tr key={user?.id}>
+                            <td>{user?.id}</td>
+                            <td>{user?.name}</td>
+                            <td>{user?.age}</td>
+                            <td>{user?.gender}</td>
+                            <td>{user?.username}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </>
     );
 }

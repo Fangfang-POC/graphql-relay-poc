@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<083202fa397e29706dcf82d6662a8be6>>
+ * @generated SignedSource<<af8933b5bd3a4beea073593ab9756bd9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,13 +12,16 @@ import { ConcreteRequest, Query } from 'relay-runtime';
 export type Gender = "FEMALE" | "MALE" | "%future added value";
 export type UsersQuery$variables = {};
 export type UsersQuery$data = {
-  readonly users: ReadonlyArray<{
-    readonly name: string | null;
-    readonly id: string;
-    readonly age: number | null;
-    readonly gender: Gender | null;
-    readonly username: string | null;
-  } | null> | null;
+  readonly users: {
+    readonly totalCount: number | null;
+    readonly userList: ReadonlyArray<{
+      readonly name: string | null;
+      readonly id: string;
+      readonly username: string | null;
+      readonly gender: Gender | null;
+      readonly age: number | null;
+    } | null> | null;
+  } | null;
 };
 export type UsersQuery = {
   variables: UsersQuery$variables;
@@ -30,44 +33,62 @@ var v0 = [
   {
     "alias": null,
     "args": null,
-    "concreteType": "User",
+    "concreteType": "UsersQueryResult",
     "kind": "LinkedField",
     "name": "users",
-    "plural": true,
+    "plural": false,
     "selections": [
       {
         "alias": null,
         "args": null,
         "kind": "ScalarField",
-        "name": "name",
+        "name": "totalCount",
         "storageKey": null
       },
       {
         "alias": null,
         "args": null,
-        "kind": "ScalarField",
-        "name": "id",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "age",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "gender",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "username",
+        "concreteType": "User",
+        "kind": "LinkedField",
+        "name": "userList",
+        "plural": true,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "name",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "username",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "gender",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "age",
+            "storageKey": null
+          }
+        ],
         "storageKey": null
       }
     ],
@@ -92,16 +113,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "500ed34e90b58361cfcdb286e5393ab4",
+    "cacheID": "ad0f9b047874a305dec3de6a9f8266ff",
     "id": null,
     "metadata": {},
     "name": "UsersQuery",
     "operationKind": "query",
-    "text": "query UsersQuery {\n  users {\n    name\n    id\n    age\n    gender\n    username\n  }\n}\n"
+    "text": "query UsersQuery {\n  users {\n    totalCount\n    userList {\n      name\n      id\n      username\n      gender\n      age\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f6625cb96fccf3239c646e3e2ee7c592";
+(node as any).hash = "b67c4976ff4bcd85c6b6e30f5c73a6f2";
 
 export default node;
