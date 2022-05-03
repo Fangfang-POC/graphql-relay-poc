@@ -42,6 +42,7 @@ module.exports = {
         publicPath: '/',
     },
     devServer: {
+        https: true,
         liveReload: true,
         open: true,
         port: parseInt(process.env.SERVER_PORT) || 6068, //make this port the same as styleguidist port to reload the page when changes are made.
