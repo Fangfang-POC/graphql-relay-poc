@@ -8,6 +8,7 @@ async function fetchGraphQL(text: string, variables: string): Promise<any> {
                 // 'Authorization': `bearer ${REACT_APP_GITHUB_AUTH_TOKEN}`,
                 'Content-Type': 'application/json',
             },
+            credentials: 'include', // Don't forget to specify this if you need cookies
             body: JSON.stringify({
                 query: text,
                 variables,
